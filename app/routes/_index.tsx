@@ -33,8 +33,7 @@ const cleanTempFiles = async () => {
 
 export const loader = async () => {
   await cleanTempFiles();
-  const figmaFile = await getFigmaFile("demo", "demo");
-  return { figmaFile };
+  return {};
 };
 
 export const action = async ({ request }: ActionFunctionArgs) => {
