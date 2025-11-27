@@ -16,7 +16,8 @@ Pretty straightforward process:
 4. Renders the Figma node tree recursively - each node type (Document, Frame, Text, Rectangle) maps to HTML elements
 5. As nodes render, they call the CSS generator to create class names
 6. Generator outputs the final CSS file with all collected styles
-7. Both files get saved to `/temp` and you can preview the output in an iframe or as code, or download them :)
+7. Server side function generates final css output and then html and css files get saved to `/temp`
+7. Files are then downloadable, and they can also be previewed in an iframe or as code :)
 
 ## Architecture
 
@@ -85,6 +86,67 @@ npm start
 4. Click "Generate Code" or try the demo
 5. Preview the generated code
 6. Download the HTML and CSS files
+
+## Known Limitations
+
+This tool currently supports a subset of Figma's features. Here's what's missing:
+
+### Node Types
+Only 4 node types are currently supported: Document, Frame, Rectangle, Text
+
+The following node types are not yet implemented:
+- **Canvas and Structure**: Canvas, Group, Transform Group, Section
+- **Shape and Vector**: Vector, Ellipse, Line, Star, Regular Polygon, Boolean Operation, Washi Tape
+- **Text**: Text Path
+- **Components**: Component, Component Set, Instance
+- **Utility**: Slice, Table, Table Cell
+
+### Visual Effects
+- **Blend modes**: All blend modes (darken, multiply, screen, overlay, color dodge, etc.) are not supported
+- **Effects**: No support for drop shadows, inner shadows, layer blur, or background blur
+- **Masks**: Alpha, vector, and luminance masking not implemented
+
+### Paint and Fills
+- **Solid colors** are supported
+- **Linear gradients** are supported
+- Missing: Radial/angular/diamond gradients, image fills, video fills, pattern/texture fills
+
+### Typography
+Supported: Font family, weight, size, text alignment (horizontal), letter spacing, and line height
+
+Missing:
+- Text decorations (underline, strikethrough)
+- Paragraph spacing
+- Text auto-resize and truncation
+- Vertical text alignment
+
+### Shape Properties
+Supported: Basic solid strokes, stroke weight, corner radius (uniform and per-corner)
+
+Missing:
+- Vector path support
+- Advanced stroke customization (caps, joins, dashes, alignment)
+
+### Layout and Constraints
+Supported: Auto layout (flex direction, padding, gap, wrap, alignment), absolute/relative positioning, min/max dimensions
+
+Missing:
+- Layout constraints (beyond basic auto layout)
+- Layout grids and guides
+
+### Components and Prototyping
+- No component or variant support
+- Prototyping features (interactions, triggers, transitions, overlays) are not included
+
+### Other Features
+- Variables and expressions - I didn't have the Enterprise API
+- Export settings
+- Published styles
+
+The app focuses on converting basic layout structures and simple designs.
+
+### Code coverage - Unit tests
+I only had enough time to write unit tests for the CSSGenerator, because of that there may be some bugs that are not accounted for.
 
 ## Tech Stack
 
