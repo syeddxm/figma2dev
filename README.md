@@ -21,6 +21,14 @@ Pretty straightforward process:
 
 ## Architecture
 
+
+### Tech Stack
+- **Framework**: Remix (Used this to have access to server-side file system access)
+- **Frontend**: React
+- **API**: Figma REST API
+- **Type Safety**: TypeScript
+- **Testing**: Jest, React Testing Library
+
 ### Key Components
 
 - **Route Handler** (`routes/_index.tsx`) - Handles form input and orchestrates the conversion
@@ -147,11 +155,3 @@ The app focuses on converting basic layout structures and simple designs.
 
 ### Code coverage - Unit tests
 I only had enough time to write unit tests for the CSSGenerator, because of that there may be some bugs that are not accounted for.
-
-## Tech Stack
-
-- **Framework**: Remix (needed for server-side file system access)
-- **Frontend**: React
-- **API**: Figma REST API
-- **Type Safety**: TypeScript
-- **Testing**: Jest, React Testing Library
